@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyBullet : MonoBehaviour
+{
+    //script that destroys the bullet prefab when it collides with another object
+public GameObject hitEffect;
+
+    
+
+    //make the bullet disappear after 5 seconds
+    void Start()
+    {
+        Destroy(gameObject, 5f);
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        
+        if(other.gameObject.tag != "Enemy") {
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 5f);
+        }
+        
+        // if the bullet hits a player then the player dies
+        if(other.gameObject.tag == "Player")
+        {
+            Destroy(other.gameObject);
+            //enable game over menu by finding the game over menu object and setting its child to active
+            GameObject gameOverMenu = GameObject.Find("GameOverMenu");
+            gameOverMenu.transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        // if the bullet hits a bullet then both bullets are destroyed
+        if(other.gameObject.tag == "Bullet")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+
+    }
+}
