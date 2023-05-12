@@ -21,6 +21,7 @@ public class SummonerEnemy : MonoBehaviour
     public int scoreToAdd = 3;
 
     public int health = 5;
+    public float spawnCooldown = 5f; //cooldown between first spawn
     //add health
 
     // Start is called before the first frame update
@@ -32,13 +33,24 @@ public class SummonerEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.FindGameObjectWithTag("Player") != null) {
-            if (Vector2.Distance(transform.position, player.position) < attackRange) {
+
+        if(GameObject.FindGameObjectWithTag("Player") != null) { 
+            //check to see if spawn cooldown is 0
+            if (spawnCooldown <= 0) {
+                
+                if (Vector2.Distance(transform.position, player.position) < attackRange) {
                 if (Time.time > attackSpeed) {
                     attackSpeed = Time.time + attackSpeed;
                     Shoot();
                 }
             }
+
+            } else {
+                //decrease spawn cooldown
+                spawnCooldown -= Time.deltaTime;
+            }
+
+            
         } else {
             transform.Rotate(0, 0, 100 * Time.deltaTime);
         }

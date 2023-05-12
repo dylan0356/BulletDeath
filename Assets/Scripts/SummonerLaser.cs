@@ -11,6 +11,7 @@ public class SummonerLaser : MonoBehaviour {
     public float radius = 3;
 
     public int attackRange = 40;
+    public float attackSpeed = 3f;
     
 
     public GameObject hitEffect;
@@ -28,13 +29,17 @@ public class SummonerLaser : MonoBehaviour {
     void Update()
     {
         if(GameObject.FindGameObjectWithTag("Player") != null) {
+            attackSpeed = 3f;
             // if time is more than the time to fire
             if (Time.time > killTime) {
 
                 Debug.Log("Time.time = " + Time.time);
                 killTime = Time.time + killTime;
                 centerOfObject = new Vector2(transform.position.x, transform.position.y);
-                Invoke("fire", killTime);
+
+                // change killTime by a random value within 30%
+                attackSpeed = attackSpeed + Random.Range(attackSpeed * 0.7f, attackSpeed * 1.3f);
+                Invoke("fire", attackSpeed);
             }
         }
     }

@@ -44,6 +44,12 @@ public class EnemySpawningRoom : MonoBehaviour
         {
             enemiesLeft = numberOfEnemies;
 
+        //wait 1 second then call SpawnEnemies()
+        SpawnEnemies();
+        }
+    }
+
+    void SpawnEnemies() {
         //Spawn enemies
         for (int i = 0; i < numberOfEnemies; i++)
         {
@@ -58,7 +64,6 @@ public class EnemySpawningRoom : MonoBehaviour
 
             //Spawn the enemy
             Instantiate(enemyToSpawn, spawnPos, Quaternion.identity);
-        }
         }
     }
 

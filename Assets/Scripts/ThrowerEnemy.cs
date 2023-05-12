@@ -72,12 +72,22 @@ public class ThrowerEnemy : MonoBehaviour
                 }
             }
 
+            //rotate to face player
+            Vector3 direction = player.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
+
+            
+
 
         } else
         {
             //spin in place when player is dead/deleted
             transform.Rotate(0, 0, 100 * Time.deltaTime);
         }
+
+        
         
     }
 
