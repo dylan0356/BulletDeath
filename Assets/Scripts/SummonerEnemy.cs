@@ -13,6 +13,7 @@ public class SummonerEnemy : MonoBehaviour
     public GameObject shootEffect;
     public GameObject SummonerLaser;
     public GameObject deathEffect;
+    public GameObject laserEffectDown;
 
 
     public int attackRange = 40;
@@ -51,8 +52,18 @@ public class SummonerEnemy : MonoBehaviour
         //set parent of effect to current object
         effect.transform.parent = transform;
 
-
         GameObject laser = Instantiate(SummonerLaser, player.position, Quaternion.identity);
+        //spawn a laserEffect at the laser's position
+        GameObject laserEffect = Instantiate(laserEffectDown, laser.transform.position, Quaternion.identity);
+        //set parent of laserEffect to laser
+        laserEffect.transform.parent = laser.transform;
+
+        //set the lasers Y to current + 30
+        laser.transform.position = new Vector3(laser.transform.position.x, laser.transform.position.y + 25, laser.transform.position.z);
+
+
+
+        Destroy(laserEffect, 1f);
         Destroy(effect, 5f);
     }
 

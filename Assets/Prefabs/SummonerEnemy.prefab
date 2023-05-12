@@ -155,6 +155,8 @@ MonoBehaviour:
     type: 3}
   deathEffect: {fileID: 2236524612970997407, guid: 15b30943589dc474e91362efb80993ec,
     type: 3}
+  laserEffectDown: {fileID: 6582367146104364184, guid: 824cdc608891bd348ad1ba8a7649d8b0,
+    type: 3}
   attackRange: 40
   attackSpeed: 10
   scoreToAdd: 3

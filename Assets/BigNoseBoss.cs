@@ -20,6 +20,7 @@ public class BigNoseBoss : MonoBehaviour
 
     public GameObject laser;
     public GameObject bulletPrefab;
+    public GameObject enemyPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +63,7 @@ public class BigNoseBoss : MonoBehaviour
         //choose one of 5 different attack cases
         //int attackCase = Random.Range(0, 5);
 
-        int attackCase = 1;
+        int attackCase = 2;
         switch(attackCase)
         {
             case 0:
@@ -92,7 +93,22 @@ public class BigNoseBoss : MonoBehaviour
                 
                 break;
             case 2:
-                Debug.Log("Attack case 2");
+                //spawn 4 enemies from enemyPrefab and spawn them in a square around the boss
+                for (int i = 0; i < 4; i++)
+                {
+                    //get current room position
+                    Vector3 roomPos = transform.position;
+
+                    //get random position within the room
+                    Vector3 spawnPos = new Vector3(roomPos.x + Random.Range(-15, 15), roomPos.y + Random.Range(-15, 15), 0);
+
+                    //spawn enemy
+                    Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+
+
+                }
+
+
                 break;
             case 3:
                 Debug.Log("Attack case 3");

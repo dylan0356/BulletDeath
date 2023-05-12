@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5990952385288866054}
   m_Layer: 0
   m_Name: BigNoseBoss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,10 +102,15 @@ MonoBehaviour:
   scoreToAdd: 200
   activateRange: 20
   attackCooldown: 3
+  bulletSpeed: 10
   deathEffect: {fileID: 6744752361442629276, guid: bc927d4398600c148b8630b8367b1778,
     type: 3}
   player: {fileID: 0}
-  laser: {fileID: 0}
+  laser: {fileID: 6582367146104364184, guid: 824cdc608891bd348ad1ba8a7649d8b0, type: 3}
+  bulletPrefab: {fileID: 7265374229781419586, guid: a52959413eef8614794a26730a7cfc93,
+    type: 3}
+  enemyPrefab: {fileID: 722978818249104863, guid: 269f5c67df07c434ab43dd0e74fa8fb3,
+    type: 3}
 --- !u!50 &-9070146937041563534
 Rigidbody2D:
   serializedVersion: 4
@@ -121,7 +126,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -140,7 +145,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00058007985, y: -0.0005800724}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
